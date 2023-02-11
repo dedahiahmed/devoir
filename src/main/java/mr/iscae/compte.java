@@ -1,11 +1,13 @@
 package mr.iscae;
 
-public class compte {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class compte {
+@JsonProperty
 private int Ncompte;
-	
+@JsonProperty
 	private double montant;
-	
+@JsonProperty
 	private Service service;
 	
 

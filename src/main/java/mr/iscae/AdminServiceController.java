@@ -31,16 +31,16 @@ public  String UpdatePass(String password) {
 
 
 
-public  String AddService(Service s ) {
+public  String AjouterUnService(Service s ) {
 	
 	services.put(s.getNomService(), s);
-	return s.getNomService() +" was add succefuly";
+	return s.getNomService() +"a ete ajouter";
 }
 
  
 
 
-public  String addCompte(String nomService,  int Ncompte,  double montant ) {
+public  String ajoutcompte(String nomService,  int Ncompte,  double montant ) {
 	
 	Service service = services.get(nomService);
 	
@@ -48,7 +48,7 @@ public  String addCompte(String nomService,  int Ncompte,  double montant ) {
 		comptes.put(Ncompte, new compte(Ncompte, montant, service ));
 		return "ajouter avec succés";
 	} else {
-		return "service  not found";
+		return "le service introuvable";
 	}
 }
 
@@ -82,24 +82,24 @@ public  String crediter(int nCompte, double montant){
 	@Path("upd")
 	public String update(@QueryParam("password") String password  ) {
 		UpdatePass(password);
-		return "password change it";
+		return "modifié";
 		
 	}
 	
 	//pour tester cette methode on utilise dans postman le methode put et on utilise le format json 
 	@PUT
-	@Path("add/service")
-	public String addservice(Service s){
-	return AddService(s);
+	@Path("/service")
+	public String AjoutService(Service s){
+	return AjouterUnService(s);
 	}
 	
 		//pour tester cette methode on utilise la methode put et le path et 
 	//le suivant : localhost:port/nomprojet/ws-rest/adminController/compte?nomService=val&Ncompte=val&montant=val
 	@PUT
 	@Path("/compte")
-	public String AddCompte(@QueryParam("nomService") String nomService, 
+	public String Ajoutcompte(@QueryParam("nomService") String nomService, 
 			@QueryParam("Ncompte") int Ncompte,@QueryParam("montant") double montant) {
-		return addCompte(nomService, Ncompte, montant );
+		return ajoutcompte(nomService, Ncompte, montant );
 		
 	}
 	
